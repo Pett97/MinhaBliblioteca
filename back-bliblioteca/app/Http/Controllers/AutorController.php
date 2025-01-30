@@ -49,9 +49,9 @@ class AutorController extends Controller implements HasMiddleware
     /**
      * Display the specified resource.
      */
-    public function show(Autor $autor)
+    public function show(Autor $autor): JsonResponse
     {
-        return new AutorResource($autor);
+        return response()->json([new AutorResource($autor)]);
     }
 
     /**
