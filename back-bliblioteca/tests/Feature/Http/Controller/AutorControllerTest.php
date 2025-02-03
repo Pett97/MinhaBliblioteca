@@ -4,10 +4,8 @@ namespace Tests\Feature\Http\Controller;
 
 use App\Http\Controllers\AutorController;
 use App\Models\Autor;
-use GuzzleHttp\Promise\Create;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Http\Request;
-use Illuminate\Routing\Route;
 use Tests\TestCase;
 
 class AutorControllerTest extends TestCase
