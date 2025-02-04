@@ -5,34 +5,41 @@ namespace Tests\Feature;
 use App\Models\Autor;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Support\Facades\Hash;
 use Tests\TestCase;
 
 class RouteTest extends TestCase
 {
-    private $userTeste;
     use RefreshDatabase;
+
+    private $userTeste;
 
     protected function setUp(): void
     {
         parent::setUp();
 
         $this->userTeste = User::factory()->create();
-
         Autor::factory(2)->create();
     }
 
     public function test_can_get_all_autors()
     {
-        $response = $this->actingAs($this->userTeste)->get('/api/autor');
+        $response = $this->actingAs($this->userTeste)->json('GET', '/api/autor');
 
         $response->assertStatus(200);
+    }
+
+    public function test_cant_get_all_autors()
+    {
+        $response = $this->json('GET', '/api/autor');
+
+        $response->assertStatus(401);
     }
 
     public function test_can_get_one_autor()
     {
         $autor = Autor::first();
-        $response = $this->actingAs($this->userTeste)->get("/api/autor/{$autor->id}");
+
+        $response = $this->actingAs($this->userTeste)->json('GET', "/api/autor/{$autor->id}");
 
         $response->assertStatus(200);
     }
@@ -40,8 +47,55 @@ class RouteTest extends TestCase
     public function test_cant_get_one_autor()
     {
         $autor = Autor::first();
-        $response = $this->get("/api/autor/{$autor->id}");
 
-        $response->assertStatus(500);
+        $response = $this->json('GET', "/api/autor/{$autor->id}");
+
+        $response->assertStatus(401);
+    }
+
+    public function test_can_update_one_autor()
+    {
+        $autor = Autor::first();
+
+        $newDataAutor = ['name' => "atualizarNome"];
+
+        $response = $this->actingAs($this->userTeste)
+            ->json('PUT', "/api/autor/{$autor->id}", $newDataAutor);
+
+        $response->assertStatus(200);
+
+        $this->assertDatabaseMissing('autors', ['name' => $autor->name]);
+        $this->assertDatabaseHas('autors', ['id' => $autor->id, 'name' => $newDataAutor['name']]);
+    }
+
+    public function test_cant_update_one_autor()
+    {
+        $autor = Autor::first();
+
+        $newDataAutor = ['name' => "atualizarNome"];
+
+        $response = $this->json('PUT', "/api/autor/{$autor->id}", $newDataAutor);
+
+        $response->assertStatus(401);
+    }
+
+    public function test_can_delete_one_autor()
+    {
+        $autor = Autor::first();
+
+        $response = $this->actingAs($this->userTeste)
+            ->json('DELETE', "/api/autor/{$autor->id}");
+
+        $response->assertStatus(200);
+        $this->assertDatabaseMissing('autors', ['id' => $autor->id]);
+    }
+
+    public function test_cant_delete_one_autor()
+    {
+        $autor = Autor::first();
+
+        $response = $this->json('DELETE', "/api/autor/{$autor->id}");
+
+        $response->assertStatus(401);
     }
 }
