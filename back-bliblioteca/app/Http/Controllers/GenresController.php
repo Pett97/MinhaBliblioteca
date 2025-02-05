@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreGenresRequest;
 use App\Http\Requests\UpdateGenresRequest;
-use App\Models\Genres;
+use App\Models\Genre;
 
-class GenresController extends Controller
+class GenreController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -27,7 +27,7 @@ class GenresController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreGenresRequest $request)
+    public function store()
     {
         //
     }
@@ -35,7 +35,7 @@ class GenresController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Genres $genres)
+    public function show()
     {
         //
     }
@@ -43,7 +43,7 @@ class GenresController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Genres $genres)
+    public function edit(Genre $genre)
     {
         //
     }
@@ -51,7 +51,7 @@ class GenresController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateGenresRequest $request, Genres $genres)
+    public function update( Genre $genre)
     {
         //
     }
@@ -59,7 +59,7 @@ class GenresController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Genres $genres)
+    public function destroy(Genre $genre)
     {
         //
     }
