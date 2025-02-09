@@ -1,13 +1,13 @@
 <?php
 
-namespace Tests\Feature;
+namespace Tests\Feature\Http\Route;
 
 use App\Models\Autor;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
-class RouteTest extends TestCase
+class RouteAutorTest extends TestCase
 {
     use RefreshDatabase;
 

@@ -22,7 +22,8 @@ class DatabaseSeeder extends Seeder
             'password' => Hash::make('123456789', ['rounds' => 12]),
         ]);
         $this->call([
-            AutorSeeder::class
+            AutorSeeder::class,
+            GenresSeeder::class
         ]);
     }
 }
