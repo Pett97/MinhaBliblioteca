@@ -2,58 +2,68 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreBookRequest;
-use App\Http\Requests\UpdateBookRequest;
+use App\Http\Resources\BookResource;
 use App\Models\Book;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
+use Illuminate\Routing\Controllers\HasMiddleware;
+use Illuminate\Routing\Controllers\Middleware;
 
-class BookController extends Controller
+class BookController extends Controller implements HasMiddleware
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+
+    public static function middleware()
     {
-        //
+        return [
+            new Middleware('auth:sanctum', except: [])
+        ];
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    public function index(): JsonResponse
     {
-        //
+        $books = Book::all();
+
+        if ($books->isEmpty()) {
+            return response()->json(['message' => "Nenhum Livro Foi Encontrado"]);
+        }
+
+        return response()->json(BookResource::collection($books));
     }
+
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store()
+    public function store(Request $request): JsonResponse
     {
-        //
+        $fields = $request->validate([
+            'name' => 'required|max:255',
+            'publication_date' => 'required|date_format:Y-m-d'
+        ]);
+
+        $book = Book::create($fields);
+
+        return response()->json(['message' => "Novo Livro criado com sucesso", "Livro:" => new BookResource($book)]);
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Book $book)
+    public function show(Book $book): JsonResponse
     {
-        //
+        return response()->json([new BookResource($book)]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Book $book)
+    public function update(Request $request, Book $book): JsonResponse
     {
-        //
-    }
+        $fields = $request->validate([
+            'name' => 'required|max:255',
+            'publication_date' => 'required|date_format:Y-m-d'
+        ]);
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update( Book $book)
-    {
-        //
+        $book->update($fields);
+
+        return response()->json(['message' => "Livro Atualizado com sucesso", "Livro" => new BookResource($book)]);
     }
 
     /**
@@ -61,6 +71,8 @@ class BookController extends Controller
      */
     public function destroy(Book $book)
     {
-        //
+        $book->delete();
+
+        return response()->json(['message' => "Livro Excluido Com Sucesso"]);
     }
 }

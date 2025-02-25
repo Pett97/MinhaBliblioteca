@@ -19,10 +19,11 @@ class BookFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => $this->faker->name,
-            'genre_id' => Genre::factory()->create()->id,
-            'autor_id' => Autor::factory()->create()->id,
-            'publication_date' => $this->date('Y-m-d')
+            'name' => $this->faker->sentence(3),
+            'genre_id' => Genre::factory(),
+            'autor_id' => Autor::factory(),
+            'pages' => $this->faker->numberBetween(50, 1000),
+            'publication_date' => $this->faker->date('Y-m-d'),
         ];
     }
 }
