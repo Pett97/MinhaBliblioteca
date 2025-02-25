@@ -21,9 +21,11 @@ class DatabaseSeeder extends Seeder
             'email' => 'testador@bol.com',
             'password' => Hash::make('123456789', ['rounds' => 12]),
         ]);
+        
         $this->call([
             AutorSeeder::class,
-            GenresSeeder::class
+            GenreSeeder::class,
+            BookSeeder::class
         ]);
     }
 }
