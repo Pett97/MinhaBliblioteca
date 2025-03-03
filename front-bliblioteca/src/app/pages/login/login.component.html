@@ -1,0 +1,12 @@
+<h3 class="center">Login em Minha Bliblioteca</h3>
+<form>
+  <fieldset>
+    <label for="email_input">Email</label>
+    <input type="text" [(ngModel)]="loginObj.email" name="email" placeholder="email" id="email_input">
+
+    <label for="password_input">Senha</label>
+    <input type="password" [(ngModel)]="loginObj.password" name="password" placeholder="senha" id="password_input">
+
+    <button class="button-primary" type="submit" value="Login" (click)="onLogin()">Login</button>
+  </fieldset>
+</form>

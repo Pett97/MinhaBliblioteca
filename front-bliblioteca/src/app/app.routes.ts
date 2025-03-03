@@ -1,17 +1,20 @@
 import { Routes } from '@angular/router';
-import { LoginComponent } from './login/login.component';
-import { HomeComponent } from './home/home.component';
-
+import { LoginComponent } from './pages/login/login.component';
+import { BooksComponent } from './pages/books/books.component';
 
 export const routes: Routes = [
   {
-    path:"",
-    component:HomeComponent,
-    title:"Home Minha Bliblioteca"
+    path: '',
+    redirectTo: 'login',
+    pathMatch: 'full'
   },
   {
-    path:"login",
-    component:LoginComponent,
-    title:"Login Minha Bliblioteca"
+    path: "login",
+    component: LoginComponent,
+    title: "Home Minha Bliblioteca"
+  },
+  {
+    path: "livros",
+    component: BooksComponent
   }
 ];
