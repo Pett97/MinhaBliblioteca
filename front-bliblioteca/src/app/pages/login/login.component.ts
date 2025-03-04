@@ -23,7 +23,7 @@ export class LoginComponent {
     this.http.post(this.appConstants.loginUrl, this.loginObj).subscribe((res: any) => {
       if (res.token) {
         this.saveTokenToLocaHost(res.token)
-        this.router.navigate(["livros"])
+        this.router.navigate(["generos"])
       }
       console.log(res.token);
     });

@@ -18,4 +18,8 @@ export class AppConstants {
     return this.baseUrl + "/book";
   }
 
+  public get GenresUrl():string{
+    return this.baseUrl + "/genre";
+  }
+
 }

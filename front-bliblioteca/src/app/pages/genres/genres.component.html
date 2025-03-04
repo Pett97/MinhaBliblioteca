@@ -1,0 +1,21 @@
+<h3 class="center">Generos</h3>
+
+<table class="shadow">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Nome</th>
+      <th class="float-right" id="th_acoes">acoes</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr *ngFor="let genero of generos">
+        <td>{{genero.id}}</td>
+        <td>{{genero.name}}</td>
+        <td class="float-right">
+          <button (click)="editarGenero()">Editar</button>
+          <button>Deletar</button>
+        </td>
+      </tr>
+  </tbody>
+</table>
