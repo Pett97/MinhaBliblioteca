@@ -17,7 +17,7 @@ export class GenresComponent implements OnInit {
 
   generos: any[] = [];
 
-  constructor(private http: HttpClient, private appConstants: AppConstants,private router:Router) { }
+  constructor(private http: HttpClient, private appConstants: AppConstants, private router: Router) { }
 
   ngOnInit(): void {
     this.getAllGeneros();
@@ -29,9 +29,8 @@ export class GenresComponent implements OnInit {
     })
   }
 
-  editarGenero(){
-    console.log("!@#!23");
-    this.router.navigate(["genero"]);
+  editarGenero(generoId: number) {
+    this.router.navigate([`genero/${generoId}`], { state: { generoId } });
   }
 
 }
