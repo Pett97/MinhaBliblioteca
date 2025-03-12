@@ -1,0 +1,15 @@
+<form [formGroup]="generoForm">
+  <fieldset>
+    <label for="nome_genero">Nome Gênero</label>
+    <input type="text" formControlName="name" id="nome_genero" required>
+  </fieldset>
+
+  <div class="clearfix">
+    <div class="float-right">
+      <button (click)="voltar()">Voltar</button>
+    </div>
+    <div class="float-left">
+      <button (click)="salvar()" [disabled]="generoForm.invalid">Salvar</button>
+    </div>
+  </div>
+</form>

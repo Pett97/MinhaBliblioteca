@@ -1,0 +1,29 @@
+<header>
+  <nav>
+    <app-nav-bar></app-nav-bar>
+  </nav>
+</header>
+
+<h3 class="center">Generos</h3>
+
+<button (click)="toCriarGenero()" class=" float-right button-small" >Adicionar Novo Genero</button>
+
+<table class="shadow">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Nome</th>
+      <th class="float-right" id="th_acoes">ações</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr *ngFor="let genero of generos">
+        <td>{{genero.id}}</td>
+        <td>{{genero.name}}</td>
+        <td class="float-right">
+          <button (click)="editarGenero(genero.id)">Editar</button>
+          <button (click)="deletarGenero(genero.id)">Deletar</button>
+        </td>
+      </tr>
+  </tbody>
+</table>
