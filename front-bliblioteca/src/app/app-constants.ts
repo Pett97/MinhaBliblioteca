@@ -10,8 +10,12 @@ export class AppConstants {
     return "http://localhost/api"
   }
 
+  public get AutorsUrl():string{
+    return this.baseUrl + "api/autor";
+  }
+
   public get loginUrl(): string {
-    return this.baseUrl + "/user/login"
+    return this.baseUrl + "/user/login";
   }
 
   public get booksUrl(): string {

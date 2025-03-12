@@ -4,9 +4,9 @@
   </nav>
 </header>
 
-<h3 class="center">Generos</h3>
+<h3 class="center">Autores</h3>
 
-<button (click)="toCriarGenero()" class=" float-right button-small" >Adicionar Novo Genero</button>
+<button (click)="toCriarAutor()" class=" float-right button-small" >Adicionar Novo Autor</button>
 
 <table class="shadow">
   <thead>
@@ -17,12 +17,12 @@
     </tr>
   </thead>
   <tbody>
-      <tr *ngFor="let genero of generos">
+      <tr *ngFor="let autor of autores">
         <td>{{genero.id}}</td>
         <td>{{genero.name}}</td>
         <td class="float-right">
-          <button (click)="editarGenero(genero.id)">Editar</button>
-          <button (click)="deletarGenero(genero.id)">Deletar</button>
+          <button (click)="editarAutor(autor.id)">Editar</button>
+          <button (click)="deletarAutor(autor.id)">Deletar</button>
         </td>
       </tr>
   </tbody>

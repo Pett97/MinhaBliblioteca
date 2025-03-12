@@ -1,8 +1,5 @@
 <form [formGroup]="generoForm">
   <fieldset>
-    <label for="id_genero">ID</label>
-    <input type="number" formControlName="id" id="id_genero" readonly>
-
     <label for="nome_genero">Nome Gênero</label>
     <input type="text" formControlName="name" id="nome_genero" required>
   </fieldset>
@@ -12,7 +9,7 @@
       <button (click)="voltar()">Voltar</button>
     </div>
     <div class="float-left">
-      <button (click)="atualizar()" [disabled]="generoForm.invalid">Atualizar</button>
+      <button (click)="salvar()" [disabled]="generoForm.invalid">Salvar</button>
     </div>
   </div>
 </form>

@@ -2,10 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { AppConstants } from '../../app-constants';
 import { JsonPipe } from '@angular/common';
+import { NavBarComponent } from '../nav-bar/nav-bar.component';
 
 @Component({
   selector: 'app-books',
-  imports: [JsonPipe],
+  imports: [JsonPipe,NavBarComponent],
   standalone:true,
   templateUrl: './books.component.html',
   styleUrl: './books.component.css'

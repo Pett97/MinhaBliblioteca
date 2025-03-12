@@ -10,6 +10,5 @@ export const customInterceptor: HttpInterceptorFn = (req, next) => {
 
     }
   })
-  //console.log("Clone Request JSON:", JSON.stringify(cloneReq, null, 2));
   return next(cloneReq);
 };
