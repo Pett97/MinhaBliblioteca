@@ -22,7 +22,7 @@ export class BooksComponent implements OnInit {
   }
 
 
-  getAllBooks() {
+  private getAllBooks() {
     console.log(this.appConstants.booksUrl);
     this.http.get(this.appConstants.booksUrl).subscribe((res:any)=>{
       this.listBooks = res.data;

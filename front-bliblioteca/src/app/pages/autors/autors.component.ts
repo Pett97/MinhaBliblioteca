@@ -6,7 +6,6 @@ import { NgFor } from '@angular/common';
 import { NavBarComponent } from '../nav-bar/nav-bar.component';
 import { Router } from '@angular/router';
 import { AppConstants } from '../../app-constants';
-import { state } from '@angular/animations';
 
 @Component({
   selector: 'app-autors',
