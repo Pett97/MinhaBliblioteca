@@ -1,0 +1,15 @@
+<form [formGroup]="autorForm">
+  <fieldset>
+    <label for="nome_autor">Nome Autor</label>
+    <input type="text" formControlName="name" id="nome_autor" required>
+  </fieldset>
+
+  <div class="clearfix">
+    <div class="float-right">
+      <button (click)="voltar()">Voltar</button>
+    </div>
+    <div class="float-left">
+      <button (click)="salvar()" [disabled]="autorForm.invalid">Salvar</button>
+    </div>
+  </div>
+</form>
