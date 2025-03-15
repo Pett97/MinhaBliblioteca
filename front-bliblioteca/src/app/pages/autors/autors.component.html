@@ -6,7 +6,7 @@
 
 <h3 class="center">Autores</h3>
 
-<button (click)="toCriarAutor()" class=" float-right button-small" >Adicionar Novo Autor</button>
+<button (click)="toCriarAutor()" class=" float-right button-small">Adicionar Novo Autor</button>
 
 <table class="shadow">
   <thead>
@@ -17,13 +17,15 @@
     </tr>
   </thead>
   <tbody>
-      <tr *ngFor="let autor of autores">
-        <td>{{genero.id}}</td>
-        <td>{{genero.name}}</td>
-        <td class="float-right">
+    <tr *ngFor="let autor of autores">
+      <td>{{autor.id}}</td>
+      <td>{{autor.name}}</td>
+      <div class="float-right">
+        <td>
           <button (click)="editarAutor(autor.id)">Editar</button>
           <button (click)="deletarAutor(autor.id)">Deletar</button>
         </td>
-      </tr>
+      </div>
+    </tr>
   </tbody>
 </table>

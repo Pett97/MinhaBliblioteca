@@ -11,7 +11,7 @@ export class AppConstants {
   }
 
   public get AutorsUrl():string{
-    return this.baseUrl + "api/autor";
+    return this.baseUrl + "/autor";
   }
 
   public get loginUrl(): string {
