@@ -1,0 +1,29 @@
+<form [formGroup]="bookForm">
+<fieldset>
+   <label for="select_genre">Nome Livro</label>
+      <input type="text" formControlName="name" id="book_name" required>
+
+      <label for="select_genre">Selecione o Genero</label>
+      <select name="select_genre" formControlName="select_genero_book" id="select_genre">
+         <option *ngFor="let genero of generos" [value]="genero.id">{{genero.id}} - {{genero.name}}</option>
+      </select>
+
+      <label for="select_autor">Selecione o Autor</label>
+      <select name="select_autor" type="text" formControlName="select_autor_book" id="select_autor">
+         <option *ngFor="let autor of autores" [value]="autor.id">{{autor.id}} - {{autor.name}}</option>
+      </select>
+
+      <label for="data_pub">Data Publicação</label>
+      <input type="date" formControlName="publication_date" id="data_pub" required>
+   </fieldset>
+ 
+   <div class="clearfix">
+     <div class="float-right">
+       <button (click)="voltar()">Voltar</button>
+     </div>
+     <div class="float-left">
+       <button (click)="atualizar()" [disabled]="bookForm.invalid">Atualizar</button>
+     </div>
+   </div>
+ </form>
+ 

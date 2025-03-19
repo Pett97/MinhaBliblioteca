@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Log;
 use App\Http\Resources\BookResource;
 use App\Models\Book;
 use Illuminate\Http\JsonResponse;
@@ -40,6 +40,18 @@ class BookController extends Controller implements HasMiddleware
             'name' => 'required|max:255',
             'publication_date' => 'required|date_format:Y-m-d'
         ]);
+
+        if($request->has('select_genero_book')){
+            $fields['genre_id'] = $request['select_genero_book'];
+        }
+
+        if($request->has('select_autor_book')){
+            $fields['autor_id'] = $request["select_autor_book"];
+        }
+
+        if($request->has("pages")){
+            $fields['pages'] = $request['pages'];
+        }
 
         $book = Book::create($fields);
 

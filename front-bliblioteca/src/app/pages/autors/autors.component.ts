@@ -49,6 +49,7 @@ export class AutorsComponent implements OnInit {
   deletarAutor(id: number): void {
     if (!id) {
       return;
+      
     } else {
       this.http.delete(`${this.appConstants.AutorsUrl}/${id}`).subscribe({
         next: () => {

@@ -4,6 +4,34 @@
   </nav>
 </header>
 
+<h3 class="center">Livros</h3>
 
-<p>books works!</p>
-<p>{{listBooks|json}}</p>
+<button (click)="toCriarLivro()" class=" float-right button-small">Adicionar Novo Livro</button>
+
+<table class="shadow">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Nome</th>
+      <th>Genero</th>
+      <th>Autor</th>
+      <th>Data</th>
+      <th class="float-right" id="th_acoes">ações</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let book of listBooks">
+      <td>{{book.id}}</td>
+      <td>{{book.name}}</td>
+      <td>{{book.genre_name}}</td>
+      <td>{{book.autor_name}}</td>
+      <td>{{ formatDate(book.publication_date) }}</td>
+      <div class="float-right">
+        <td>
+          <button (click)="editarLivro(book.id)">Editar</button>
+          <button (click)="deletarLivro(book.id)">Deletar</button>
+        </td>
+      </div>
+    </tr>
+  </tbody>
+</table>
