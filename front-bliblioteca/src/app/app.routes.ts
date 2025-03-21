@@ -7,6 +7,8 @@ import { CreateGenreComponent } from './pages/genres/create-genre/create-genre.c
 import { AutorsComponent } from './pages/autors/autors.component';
 import { CreateAutorComponent } from './pages/autors/create-autor/create-autor.component';
 import { AutorComponent } from './pages/autors/autor/autor.component';
+import { CreateBookComponent } from './pages/books/create-book/create-book.component';
+import { BookComponent } from './pages/books/book/book.component';
 
 export const routes: Routes = [
   {
@@ -22,6 +24,14 @@ export const routes: Routes = [
   {
     path: "livros",
     component: BooksComponent
+  },
+  {
+    path:"criar-book",
+    component:CreateBookComponent
+  },
+  {
+    path:'book/:id',
+    component:BookComponent
   },
   {
     path: "generos",

@@ -1,13 +1,15 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Log;
 use App\Http\Resources\BookResource;
 use App\Models\Book;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controllers\HasMiddleware;
 use Illuminate\Routing\Controllers\Middleware;
+
+use function PHPUnit\Framework\isNull;
 
 class BookController extends Controller implements HasMiddleware
 {
@@ -41,6 +43,18 @@ class BookController extends Controller implements HasMiddleware
             'publication_date' => 'required|date_format:Y-m-d'
         ]);
 
+        if($request->has('select_genero_book')){
+            $fields['genre_id'] = $request['select_genero_book'];
+        }
+
+        if($request->has('select_autor_book')){
+            $fields['autor_id'] = $request["select_autor_book"];
+        }
+
+        if($request->has("pages")){
+            $fields['pages'] = $request['pages'];
+        }
+
         $book = Book::create($fields);
 
         return response()->json(['message' => "Novo Livro criado com sucesso", "Livro:" => new BookResource($book)]);
@@ -60,6 +74,14 @@ class BookController extends Controller implements HasMiddleware
             'name' => 'required|max:255',
             'publication_date' => 'required|date_format:Y-m-d'
         ]);
+
+        if ($request->has('select_genero_book')) {
+            $fields['genre_id'] = $request->input('select_genero_book') == 0 ? null : $request->input('select_genero_book');
+        }
+        
+        if($request->has('select_autor_book')){
+            $fields['autor_id'] = $request->input('select_autor_book') == 0 ? null : $request->input('select_autor_book');
+        }
 
         $book->update($fields);
 
