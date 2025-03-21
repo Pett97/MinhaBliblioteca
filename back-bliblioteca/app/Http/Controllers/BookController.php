@@ -9,6 +9,8 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Controllers\HasMiddleware;
 use Illuminate\Routing\Controllers\Middleware;
 
+use function PHPUnit\Framework\isNull;
+
 class BookController extends Controller implements HasMiddleware
 {
 
@@ -72,6 +74,14 @@ class BookController extends Controller implements HasMiddleware
             'name' => 'required|max:255',
             'publication_date' => 'required|date_format:Y-m-d'
         ]);
+
+        if ($request->has('select_genero_book')) {
+            $fields['genre_id'] = $request->input('select_genero_book') == 0 ? null : $request->input('select_genero_book');
+        }
+        
+        if($request->has('select_autor_book')){
+            $fields['autor_id'] = $request->input('select_autor_book') == 0 ? null : $request->input('select_autor_book');
+        }
 
         $book->update($fields);
 

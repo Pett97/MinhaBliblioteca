@@ -50,8 +50,8 @@ export class BookComponent implements OnInit {
           this.bookForm.patchValue({
             name: res[0].name,
             publication_date: res[0].publication_date,
-            select_genero_book: res[0].genre_id || '',
-            select_autor_book: res[0].autor_id || ''
+            select_genero_book: res[0].genre_id || "0",
+            select_autor_book: res[0].autor_id || '0'
           });
         } else {
           this.errorMessage = "Livro não encontrado";
@@ -95,6 +95,18 @@ export class BookComponent implements OnInit {
   }
 
   atualizar() {
-
+    this.http.patch(`${this.appConstants.booksUrl}/${history.state.id}`,this.bookForm.value).subscribe({
+      next:(res:any)=>{
+        alert("Livro Atualizado com sucesso");
+        this.router.navigate(['livros']);
+      },
+      error:(err)=>{
+        alert("Erro ao Atualizar Livro");
+        console.log(err);
+      },
+      complete() {
+        
+      },
+    })
   }
 }

@@ -5,11 +5,13 @@
 
       <label for="select_genre">Selecione o Genero</label>
       <select name="select_genre" formControlName="select_genero_book" id="select_genre">
+        <option value="0">Nenhum</option>
          <option *ngFor="let genero of generos" [value]="genero.id">{{genero.id}} - {{genero.name}}</option>
       </select>
 
       <label for="select_autor">Selecione o Autor</label>
       <select name="select_autor" type="text" formControlName="select_autor_book" id="select_autor">
+        <option value="0">Nenhum</option>
          <option *ngFor="let autor of autores" [value]="autor.id">{{autor.id}} - {{autor.name}}</option>
       </select>
 

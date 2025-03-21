@@ -15,7 +15,7 @@ import { DateFormatService } from '../../services/formtar-data.service';
 })
 export class BooksComponent implements OnInit {
 
-  constructor(private dateFormatService: DateFormatService,private http: HttpClient, private appConstants: AppConstants, private router: Router) { }
+  constructor(private dateFormatService: DateFormatService, private http: HttpClient, private appConstants: AppConstants, private router: Router) { }
 
   listBooks: any[] = [];
 
@@ -44,13 +44,25 @@ export class BooksComponent implements OnInit {
   }
 
   editarLivro(id: number) {
-    if(id){
-      this.router.navigate([`book/${id}`],{state:{id}});
+    if (id) {
+      this.router.navigate([`book/${id}`], { state: { id } });
     }
     return;
   }
 
   deletarLivro(id: number) {
-    return;
+    if (id) {
+      this.http.delete(`${this.appConstants.booksUrl}/${id}`).subscribe({
+        next: (res: any) => {
+          alert("Livro Deletado Com Sucesso");
+        },
+        error: (res: any) => {
+          alert("Nao Foi Possivel Deletar Livro");
+        },
+        complete() {
+          window.location.reload();
+        },
+      })
+    }
   }
 }
