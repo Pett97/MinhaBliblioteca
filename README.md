@@ -56,4 +56,17 @@ cd back-bliblioteca
 
 ```
 
+## Front End
+O Front foi feito usando Angular 
+
+### instalação do angular 
+```
+cd front-biblioteca
+```
+### instalar pacotes com npm ou yarn
+
+### acessar 
+```
+http://localhost:4200/login
+```
 
