@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Log;
 
 class UserController extends Controller
 {
@@ -15,6 +16,8 @@ class UserController extends Controller
      */
     public function create(Request $request): JsonResponse
     {
+        Log::debug($request);
+
         $fields = $request->validate([
             'name' => 'required|max:255',
             'email' => 'required|email|unique:users',
@@ -24,6 +27,8 @@ class UserController extends Controller
         $user = User::create($fields);
 
         $token = $user->createToken($request->name);
+
+        Log::debug($token);
 
         return response()->json(['message' => "Usuario Criado Com Sucesso", 'user' => [
             'name' => $user->name,
