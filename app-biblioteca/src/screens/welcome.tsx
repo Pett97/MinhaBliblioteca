@@ -5,6 +5,7 @@ function Welcome() {
   return (
     <>
     <Info info="Como usar o app "></Info>
+    <Info info="Links Uteis "></Info>
     </>
   )
 }
