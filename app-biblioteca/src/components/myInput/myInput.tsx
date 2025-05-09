@@ -1,5 +1,6 @@
 import React from "react";
 import { TextInput } from "react-native-paper";
+import myInputStyle from "./myInput";
 
 interface MyInputProps {
   label: string;
@@ -29,6 +30,7 @@ const MyInput: React.FC<MyInputProps> = ({
 
   return (
     <TextInput
+      style={myInputStyle.labelInput}
       label={label}
       value={value}
       onChangeText={onChangeText}

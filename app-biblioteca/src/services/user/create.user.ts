@@ -1,6 +1,6 @@
 import { USER_LINK } from '../api-endpoint';
 
-class CreateUser {
+export class CreateUser {
    private name: string;
    private email: string;
    private password: string;
@@ -52,7 +52,7 @@ class CreateUser {
       }
    }
 
-   private validationFields(): boolean {
+   public validationFields(): boolean {
       this.errosArray = [];
       if (!this.name.trim()) {
          this.errosArray.push("O nome não pode estar vazio");
