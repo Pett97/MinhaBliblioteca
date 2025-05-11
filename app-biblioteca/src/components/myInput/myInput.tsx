@@ -1,7 +1,6 @@
 import React from "react";
 import { TextInput } from "react-native-paper";
-import myInputStyle from "./myInput";
-
+import myInputStyle from "./my.-input-style";
 interface MyInputProps {
   label: string;
   iconName: string;

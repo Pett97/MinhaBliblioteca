@@ -38,23 +38,23 @@ class UserController extends Controller
     }
 
     public function login(Request $request)
-    {
+    { 
+        Log::debug("chegouAqui");
         $request->validate([
             'email' => 'required|email',
             'password' => 'required'
         ]);
 
         $user = User::where('email', $request->email)->first();
-
         if (!$user) {
-            return response()->json(['message' => "Não Foi encontrado nenhum usuario com esse email"]);
+            return response()->json(['message' => "Não Foi encontrado nenhum usuario com esse email"],404);
         }
 
         if ($user && !Hash::check($request->password, $user->password)) {
-            return response()->json(['message' => 'senha não confere']);
+            return response()->json(['message' => 'senha não confere'],404);
         }
 
         $token = $user->createToken($user->name);
-        return response()->json(['message' => "login efetuado com sucesso", "user" => $user, "token" => $token->plainTextToken]);
+        return response()->json(['message' => "login efetuado com sucesso", "user" => $user, "token" => $token->plainTextToken],201);
     }
 }
