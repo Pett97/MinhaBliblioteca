@@ -36,8 +36,7 @@ function Login() {
         mode="contained"
         onPress={async () => {
           const user = await login(email, password);
-          setToken(user);
-          console.log(user);
+          setToken(user.token);
           console.log(`TOKEN = ${token}`);
         }}
       ></MyButton>

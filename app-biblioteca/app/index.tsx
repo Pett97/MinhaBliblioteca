@@ -1,10 +1,11 @@
 import { View, StyleSheet } from "react-native";
 
 import Login from "../src/screens/login/login";
+import Books from "../src/screens/books/books";
 export default function Index() {
   return (
     <View style={styles.container}>
-      <Login />
+      <Books></Books>
     </View>
   );
 }
